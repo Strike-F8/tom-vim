@@ -1,2 +1,5 @@
 " Detect .toms files
-au BufRead,BufNewFile *.toms set filetype=toms
+augroup tom_filetype
+    autocmd!
+    au BufRead,BufNewFile *.toms set filetype=toms
+augroup END
