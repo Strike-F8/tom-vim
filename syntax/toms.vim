@@ -26,7 +26,7 @@ syntax match tomAssignment /=\|+=\|-=|\*=|\/=|%=|<<=|>>=|&=|\^=|\|=/
 syntax match tomConditional /?\|:/
 
 " === Numbers ===
-syntax match tomNumber /\v(\d+\.\d*|\d*\.\d+|\d+)/
+syntax match tomNumber /\v<(\d+\.\d*|\d*\.\d+|\d+)>/
 
 " === Strings ===
 syntax region tomString start=/"/ skip=/\\"/ end=/"/
