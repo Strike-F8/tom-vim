@@ -8,7 +8,7 @@ if exists("b:current_syntax")
 endif
 
 " === Keywords ===
-syntax keyword tomControl if else switch case default for while do repeat break continue return forward
+syntax keyword tomControl if else switch case default for while do repeat break continue return forward import
 syntax keyword tomLabelLabel L
 
 " === Types ===
