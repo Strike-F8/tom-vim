@@ -1,5 +1,5 @@
 " Vim syntax file for the 'tom' language
-" Maintainer: Edward Fernandez
+" Maintainer: Edward Fernandez (Strike_F8@pm.me)
 " Language: tom (.toms)
 " Description: Syntax highlighting based on language spec
 
@@ -20,8 +20,11 @@ syntax keyword tomConst null true false
 " === Definitions ===
 syntax keyword tomModule title author native attach compact
 
+" === Language Variables ===
+syntax keyword tomLanguageVariable this super
+
 " === Operators ===
-syntax match tomOperator '\V++\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<this\>\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
+syntax match tomOperator '\V++\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
 syntax match tomAssignment /=\|+=\|-=|\*=|\/=|%=|<<=|>>=|&=|\^=|\|=/
 syntax match tomConditional /?\|:/
 
@@ -38,17 +41,18 @@ syntax match tomComment /\/\/.*/
 syntax match tomLabel /^\s*\zs\w\+\ze:/
 
 " === Highlight links ===
-highlight link tomControl Keyword
-highlight link tomLabelLabel Label
-highlight link tomType Type
-highlight link tomConst Constant
-highlight link tomOperator Operator
-highlight link tomAssignment Operator
-highlight link tomConditional Conditional
-highlight link tomNumber Number
-highlight link tomString String
-highlight link tomComment Comment
-highlight link tomLabel Label
-highlight link tomModule PreProc
+highlight link tomControl	    Keyword
+highlight link tomLabelLabel	    Label
+highlight link tomType		    Type
+highlight link tomConst		    Constant
+highlight link tomOperator	    Operator
+highlight link tomAssignment	    Operator
+highlight link tomConditional	    Conditional
+highlight link tomNumber	    Number
+highlight link tomString	    String
+highlight link tomComment	    Comment
+highlight link tomLabel		    Label
+highlight link tomModule	    PreProc
+highlight link tomLanguageVariable  Identifier
 
 let b:current_syntax = "toms"
