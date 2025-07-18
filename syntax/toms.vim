@@ -12,19 +12,19 @@ syntax keyword tomControl if else switch case default for while do repeat break 
 syntax keyword tomLabelLabel L
 
 " === Types ===
-syntax keyword tomType int float bool string class
+syntax keyword tomType int double string class Vector void
 
 " === Constant keywords ===
 syntax keyword tomConst null true false
 
 " === Definitions ===
-syntax keyword tomModule title author native attach compact
+syntax keyword tomModule title author native attach compact public private static
 
 " === Language Variables ===
 syntax keyword tomLanguageVariable this super
 
 " === Operators ===
-syntax match tomOperator '\V++\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
+syntax match tomOperator '\V++\|+\|/\|*\|<\|>\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
 syntax match tomAssignment /=\|+=\|-=|\*=|\/=|%=|<<=|>>=|&=|\^=|\|=/
 syntax match tomConditional /?\|:/
 
