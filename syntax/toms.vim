@@ -12,19 +12,19 @@ syntax keyword tomControl if else switch case default for while do repeat break 
 syntax keyword tomLabelLabel L
 
 " === Types ===
-syntax keyword tomType int double string class Vector void
+syntax keyword tomType int float bool string class
 
 " === Constant keywords ===
 syntax keyword tomConst null true false
 
 " === Definitions ===
-syntax keyword tomModule title author native attach compact public private static
+syntax keyword tomModule title author native attach compact
 
 " === Language Variables ===
 syntax keyword tomLanguageVariable this super
 
 " === Operators ===
-syntax match tomOperator '\V++\|+\|/\|*\|<\|>\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
+syntax match tomOperator '\V++\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
 syntax match tomAssignment /=\|+=\|-=|\*=|\/=|%=|<<=|>>=|&=|\^=|\|=/
 syntax match tomConditional /?\|:/
 
@@ -36,6 +36,7 @@ syntax region tomString start=/"/ skip=/\\"/ end=/"/
 
 " === Comments ===
 syntax match tomComment /\/\/.*/
+syntax match tomTodoComment /\v(TODO:)\c/ containedin=tomComment
 
 " === Labels ===
 syntax match tomLabel /^\s*\zs\w\+\ze:/
@@ -54,5 +55,6 @@ highlight link tomComment	    Comment
 highlight link tomLabel		    Label
 highlight link tomModule	    PreProc
 highlight link tomLanguageVariable  Identifier
+highlight link tomTodoComment	    Todo
 
 let b:current_syntax = "toms"
