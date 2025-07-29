@@ -42,8 +42,17 @@ syntax match tomNumber /\v<(\d+\.\d*|\d*\.\d+|\d+)>/
 highlight link tomNumber Number
 
 " === Strings ===
-syntax region tomString start=/"/ skip=/\\"/ end=/"/
-highlight link tomString String
+" Double-quoted strings
+syntax region tomStringDouble start=/"/ end=/"/ contains=tomEscapeSequence keepend
+highlight link tomStringDouble String
+
+" Escape sequences inside double-quoted strings
+syntax match tomEscapeSequence /\\\([\"'\\ntrbfu]\|x[0-9A-Fa-f]\{2\}\|u[0-9A-Fa-f]\{4\}\)/ contained containedin=tomStringDouble
+highlight link tomEscapeSequence SpecialChar
+
+" Single-quoted character literals or strings
+syntax region tomCharSingle start=+'+ end=+'+ keepend
+highlight link tomCharSingle Character
 
 " === Comments ===
 " Single-line comments starting with //
