@@ -8,19 +8,31 @@ if exists("b:current_syntax")
 endif
 
 " === Keywords ===
-syntax keyword tomControl if else switch case default for while do repeat break continue return forward import
-highlight link tomControl Keyword
+syntax keyword tomControl if else switch case default for while do repeat break continue return forward
+highlight link tomControl Statement
+
+syntax keyword tomKeywordDeclaration class const static final abstract new binary native attach author title import extends public private
+highlight link tomKeywordDeclaration Keyword
 
 " === Types ===
-syntax keyword tomType int float bool string class
+syntax keyword tomType int double string Vector var void Index Buffer BmpFile Point Object Matrix Plane Path Rect
 highlight link tomType Type
+
+syntax keyword tomIdentifier DropDownList TabCtrl CalcBox Dialog ArrangeBar PushBtn EditCtrl CtrlList Arranger Checkbox
+highlight link tomIdentifier Identifier
+
+syntax match tomMatchIdentifiers /\v\<[A-Z][a-zA-Z]*(Handle|Scene|Prop|Info)\>/
+highlight link tomArithmetic Identifier
+
+syntax match tomMatchIdentifiers2 /\v\< (Kjs|DLG) [A-Z] [a-zA-Z0-9_]* \>/
+highlight link tomMatchIdentifiers2 Identifier
 
 " === Constant keywords ===
 syntax keyword tomConst null true false
 highlight link tomConst	Constant
 
 " === Definitions ===
-syntax keyword tomModule title author native attach compact
+syntax keyword tomModule title author native attach import
 highlight link tomModule PreProc
 
 " === Language Variables ===
@@ -74,6 +86,19 @@ highlight link tomTodoKeyword Todo
 " === Labels ===
 syntax match tomLabel /^\s*\zs\w\+\ze:/
 highlight link tomLabel	Label
+
+syntax match tomSupportFunctionBuiltin /\v\<sizeof|GetItem(Double|Integer|String)?|LoadAttached|BmpFile|SplitText|JoinText|OkCancel\>/
+highlight link tomSupportFunctionBuiltin Function
+
+syntax match tomSupportFunctionDebug /\v\<DebugMessage|ErrorMessage\>/
+highlight link tomSupportFunctionDebug Function
+
+syntax match tomInvalidShort /\v\<[a-z_][a-zA-Z0-9_]{0,2}\>/
+highlight link tomInvalidShort Error
+
+syntax match tomVariableOther /\v\<[a-z_][a-zA-Z0-9_]{3,10}\>/
+highlight link tomVariableOther Identifier
+
 
 
 let b:current_syntax = "toms"
