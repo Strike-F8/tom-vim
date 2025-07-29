@@ -9,52 +9,62 @@ endif
 
 " === Keywords ===
 syntax keyword tomControl if else switch case default for while do repeat break continue return forward import
-highlight link tomControl	    Keyword
+highlight link tomControl Keyword
 
 " === Types ===
 syntax keyword tomType int float bool string class
-highlight link tomType		    Type
+highlight link tomType Type
 
 " === Constant keywords ===
 syntax keyword tomConst null true false
-highlight link tomConst		    Constant
+highlight link tomConst	Constant
 
 " === Definitions ===
 syntax keyword tomModule title author native attach compact
-highlight link tomModule	    PreProc
+highlight link tomModule PreProc
 
 " === Language Variables ===
 syntax keyword tomLanguageVariable this super
-highlight link tomLanguageVariable  Identifier
+highlight link tomLanguageVariable Identifier
 
 " === Operators ===
 syntax match tomOperator '\V++\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
-highlight link tomOperator	    Operator
+highlight link tomOperator Operator
+
+syntax match tomArithmetic '\V+\|-\|*\|/'
+highlight link tomArithmetic Operator
 
 syntax match tomAssignment /=\|+=\|-=|\*=|\/=|%=|<<=|>>=|&=|\^=|\|=/
-highlight link tomAssignment	    Operator
-
-syntax match tomConditional /?\|:/
-highlight link tomConditional	    Conditional
+highlight link tomAssignment Operator
 
 " === Numbers ===
 syntax match tomNumber /\v<(\d+\.\d*|\d*\.\d+|\d+)>/
-highlight link tomNumber	    Number
+highlight link tomNumber Number
 
 " === Strings ===
 syntax region tomString start=/"/ skip=/\\"/ end=/"/
-highlight link tomString	    String
+highlight link tomString String
 
 " === Comments ===
-syntax match tomComment /\/\/.*/
-highlight link tomComment	    Comment
+" Single-line comments starting with //
+syntax match tomCommentLine "//.*$" contains=tomTodoKeyword
+highlight link tomCommentLine Comment
 
-syntax match tomTodoComment /\v(TODO:)\c/ containedin=tomComment
-highlight link tomTodoComment	    Todo
+" TODO keyword inside single-line comments
+syntax match tomTodoKeyword /\v(TODO:)\c/ contained containedin=tomCommentLine
+highlight link tomTodoKeyword Todo
+
+" Block comments starting with /* and ending with */
+syntax region tomCommentBlock start="/\*" end="\*/" contains=tomTodoKeyword
+highlight link tomCommentBlock Comment
+
+" TODO keyword inside block comments
+syntax match tomTodoKeyword /\v(TODO:)\c/ contained containedin=tomCommentBlock
+highlight link tomTodoKeyword Todo
 
 " === Labels ===
 syntax match tomLabel /^\s*\zs\w\+\ze:/
-highlight link tomLabel		    Label
+highlight link tomLabel	Label
 
 
 let b:current_syntax = "toms"
