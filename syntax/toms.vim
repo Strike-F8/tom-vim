@@ -9,52 +9,52 @@ endif
 
 " === Keywords ===
 syntax keyword tomControl if else switch case default for while do repeat break continue return forward import
-syntax keyword tomLabelLabel L
+highlight link tomControl	    Keyword
 
 " === Types ===
 syntax keyword tomType int float bool string class
+highlight link tomType		    Type
 
 " === Constant keywords ===
 syntax keyword tomConst null true false
+highlight link tomConst		    Constant
 
 " === Definitions ===
 syntax keyword tomModule title author native attach compact
+highlight link tomModule	    PreProc
 
 " === Language Variables ===
 syntax keyword tomLanguageVariable this super
+highlight link tomLanguageVariable  Identifier
 
 " === Operators ===
 syntax match tomOperator '\V++\|--\|.\|\[\|]\|!\|~\|-\|(\|)\|\<is\>\|isnot\|copyof\|sizeof\|typeof\|\\|\|&\|\^'
+highlight link tomOperator	    Operator
+
 syntax match tomAssignment /=\|+=\|-=|\*=|\/=|%=|<<=|>>=|&=|\^=|\|=/
+highlight link tomAssignment	    Operator
+
 syntax match tomConditional /?\|:/
+highlight link tomConditional	    Conditional
 
 " === Numbers ===
 syntax match tomNumber /\v<(\d+\.\d*|\d*\.\d+|\d+)>/
+highlight link tomNumber	    Number
 
 " === Strings ===
 syntax region tomString start=/"/ skip=/\\"/ end=/"/
+highlight link tomString	    String
 
 " === Comments ===
 syntax match tomComment /\/\/.*/
+highlight link tomComment	    Comment
+
 syntax match tomTodoComment /\v(TODO:)\c/ containedin=tomComment
+highlight link tomTodoComment	    Todo
 
 " === Labels ===
 syntax match tomLabel /^\s*\zs\w\+\ze:/
-
-" === Highlight links ===
-highlight link tomControl	    Keyword
-highlight link tomLabelLabel	    Label
-highlight link tomType		    Type
-highlight link tomConst		    Constant
-highlight link tomOperator	    Operator
-highlight link tomAssignment	    Operator
-highlight link tomConditional	    Conditional
-highlight link tomNumber	    Number
-highlight link tomString	    String
-highlight link tomComment	    Comment
 highlight link tomLabel		    Label
-highlight link tomModule	    PreProc
-highlight link tomLanguageVariable  Identifier
-highlight link tomTodoComment	    Todo
+
 
 let b:current_syntax = "toms"
